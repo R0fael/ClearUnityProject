@@ -55,7 +55,7 @@ namespace OXO_Engine.Combat
                 {
                     try
                     {
-                        float distance = Vector3.Distance(transform.position, FindObjectOfType<PlayerMovement>().transform.position);
+                        float distance = Vector3.Distance(transform.position, FindAnyObjectByType<PlayerMovement>().transform.position);
                         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, distance, mask);
                         if (hit.collider.CompareTag("PlayerMovement") || !avoiding_waste)
                         {
@@ -72,8 +72,9 @@ namespace OXO_Engine.Combat
 
         private void Shoot()
         {
-            bullet.transform.SetPositionAndRotation(shot_point.position, shot_point.rotation);
-            Instantiate(bullet);
+            GameObject b = Instantiate(bullet);
+            b.transform.SetPositionAndRotation(shot_point.position, shot_point.rotation);
+            
             if (rb != null)
             {
                 rb.AddForce(-transform.right * force);
@@ -98,7 +99,7 @@ namespace OXO_Engine.Combat
             {
                 try
                 {
-                    Vector3 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
+                    Vector3 playerPos = FindAnyObjectByType<PlayerMovement>().transform.position;
                     Vector3 difference = playerPos - transform.position;
                     float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, rotZ);

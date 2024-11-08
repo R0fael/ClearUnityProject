@@ -1,14 +1,28 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    private float time;
+    public bool isNegative;
+    public float time;
+    public UnityEvent onTimerEnd;
 
     private void Update()
     {
-        time += Time.deltaTime;
+        if (isNegative)
+        {
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                onTimerEnd.Invoke();
+            }
+        }
+        else
+        {
+            time += Time.deltaTime;
+        }
         text.text = ((int)time).ToString();
     }
 }

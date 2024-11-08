@@ -7,11 +7,22 @@ namespace OXO_Engine
 {
     public class Enemy : MonoBehaviour
     {
+        [Header("Enemy Script")]
+        [Tooltip("The player, that has to be folowed")]
         public Transform player;
+        [Tooltip("Is the movement will be Top-Down")]
         public bool isTopDown;
+        [Tooltip("Speed")]
         public float speed;
+
+        [Space(16)]
+
+        [Header("Jumping")]
+        [Tooltip("Height, but of a jump")]
         public float jumpHeight;
+        [Tooltip("Tag, on which the enemy can jump")]
         public string jump_tag;
+        [Tooltip("The difference of a player and an enemy to jump")]
         public float jump_difference;
 
         [HideInInspector]
@@ -24,7 +35,7 @@ namespace OXO_Engine
             healthSystem = rb.GetComponent<HealthSystem>();
             if (player == null)
             {
-                player = FindObjectOfType<PlayerMovement>().transform;
+                player = FindAnyObjectByType<PlayerMovement>().transform;
             }
         }
 

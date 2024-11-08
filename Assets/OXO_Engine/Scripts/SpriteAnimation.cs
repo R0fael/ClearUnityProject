@@ -7,7 +7,7 @@ namespace OXO_Engine.Graphics
     /// <summary>
     /// The animation for changing sprites
     /// </summary>
-    [CreateAssetMenu]
+    [CreateAssetMenu(fileName = "SpriteAnimation", menuName = "OXO Engine/Sprite Animation")]
     public class SpriteAnimation : ScriptableObject
     {
         [Tooltip("All frames for the animation")]
