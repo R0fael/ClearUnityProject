@@ -14,7 +14,7 @@ namespace OXO_Engine
                 DontDestroyOnLoad[] objects = FindObjectsByType<DontDestroyOnLoad>(FindObjectsSortMode.None);
                 foreach (DontDestroyOnLoad l in objects)
                 {
-                    if (!l.isSingleton && l.singletonID == singletonID)
+                    if (l.isSingleton && l.singletonID == singletonID && l.gameObject != gameObject)
                     {
                         Destroy(gameObject);
                     }

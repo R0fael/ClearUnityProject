@@ -22,6 +22,7 @@ namespace OXO_Engine
 
         private Rigidbody2D rb;
 
+
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
